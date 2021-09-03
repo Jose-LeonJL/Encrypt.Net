@@ -20,6 +20,12 @@ namespace Encrypt.Net.Text
         }
 
         //Constructores
+        public Text_Encrypt()
+        {
+            this._Contraseña = null;
+            this._Contraseña_Bytes = null;
+        }
+
         public Text_Encrypt(string Key)
         {
             this._Contraseña = Key;
