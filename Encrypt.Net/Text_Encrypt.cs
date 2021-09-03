@@ -33,9 +33,25 @@ namespace Encrypt.Net.Text
         }
 
         //Procesos y funciones
+
+        //EAS
+        public string AES128()
+        {
+            string Resultado = "";
+            try
+            {
+
+            }catch(Exception ex)
+            {
+
+            }
+            return Resultado;
+        }
+
+        //Cifrados SHA
         public string sha256(string Text)
         {
-            string Resultado;
+            string Resultado="";
             try
             {
                 using var sha256 = SHA256.Create();
@@ -53,7 +69,113 @@ namespace Encrypt.Net.Text
             }
             return Resultado;
         }
+        public string sha384(string Text)
+        {
+            string Resultado = "";
+            try
+            {
+                using var sha354 = SHA384.Create();
+                byte[] Body = sha354.ComputeHash(Encoding.UTF8.GetBytes(Text));
+                var Constructor = new StringBuilder();
+                for (int i = 0; i < Body.Length; i++)
+                {
+                    Constructor.Append(Body[i].ToString("x2"));
+                }
+                Resultado = Constructor.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Resultado;
+        }
+        public string sha512(string Text)
+        {
+            string Resultado = "";
+            try
+            {
+                using var sha512 = SHA512.Create();
+                byte[] Body = sha512.ComputeHash(Encoding.UTF8.GetBytes(Text));
+                var Constructor = new StringBuilder();
+                for (int i = 0; i < Body.Length; i++)
+                {
+                    Constructor.Append(Body[i].ToString("x2"));
+                }
+                Resultado = Constructor.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Resultado;
+        }
 
+        //Cifrados HMAC
+        public string HMAC_sha256(string Text,string Key)
+        {
+            string Resultado = "";
+            try
+            {
+                byte[] Contraseña = Encoding.UTF8.GetBytes(Key);
+                byte[] Body = Encoding.UTF8.GetBytes(Text);
+                HMACSHA256 Encoder = new HMACSHA256(Contraseña);
+                byte[] Codificacion = Encoder.ComputeHash(Body);
+                var Constructor = new StringBuilder();
+                for (int i = 0; i < Codificacion.Length; i++)
+                {
+                    Constructor.Append(Codificacion[i].ToString("x2"));
+                }
+                Resultado = Constructor.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Resultado;
+        }
+        public string HMAC_sha384(string Text,string Key)
+        {
+            string Resultado = "";
+            try
+            {
+                byte[] Contraseña = Encoding.UTF8.GetBytes(Key);
+                byte[] Body = Encoding.UTF8.GetBytes(Text);
+                HMACSHA384 Encoder = new HMACSHA384(Contraseña);
+                byte[] Codificacion = Encoder.ComputeHash(Body);
+                var Constructor = new StringBuilder();
+                for (int i = 0; i < Codificacion.Length; i++)
+                {
+                    Constructor.Append(Codificacion[i].ToString("x2"));
+                }
+                Resultado = Constructor.ToString();
+            }catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Resultado;
+        }
+        public string HMAC_sha512(string Text, string Key)
+        {
+            string Resultado = "";
+            try
+            {
+                byte[] Contraseña = Encoding.UTF8.GetBytes(Key);
+                byte[] Body = Encoding.UTF8.GetBytes(Text);
+                HMACSHA512 Encoder = new HMACSHA512(Contraseña);
+                byte[] Codificacion = Encoder.ComputeHash(Body);
+                var Constructor = new StringBuilder();
+                for (int i = 0; i < Codificacion.Length; i++)
+                {
+                    Constructor.Append(Codificacion[i].ToString("x2"));
+                }
+                Resultado = Constructor.ToString();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Resultado;
+        }
         public string base64(string text)
         {
             string Resultado;
