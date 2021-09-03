@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Authors>Jose-LeonJL</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/Jose-LeonJL/Encrypt.Net</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Jose-LeonJL/Encrypt.Net</RepositoryUrl>
+    <Description>Librería creada con el propósito de hacer mas ligero el trabajo de cifrado de distintos tipos.</Description>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
