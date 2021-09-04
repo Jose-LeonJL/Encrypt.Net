@@ -9,7 +9,7 @@
     <PackageProjectUrl>https://github.com/Jose-LeonJL/Encrypt.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jose-LeonJL/Encrypt.Net</RepositoryUrl>
     <Description>Librería creada con el propósito de hacer mas ligero el trabajo de cifrado de distintos tipos.</Description>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
