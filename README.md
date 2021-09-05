@@ -54,7 +54,7 @@ public class Ejemplo
 >Vb.Net
 
 ```vb
-Imports Times
+Imports Encrypt.Net.Text
 Public Class Ejemplo
 'SHA examples
   Public sub SHA_Test()
