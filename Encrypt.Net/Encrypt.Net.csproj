@@ -9,8 +9,11 @@
     <PackageProjectUrl>https://github.com/Jose-LeonJL/Encrypt.Net</PackageProjectUrl>
     <RepositoryUrl>https://github.com/Jose-LeonJL/Encrypt.Net</RepositoryUrl>
     <Description>Encrypt.Net Librería creada con el propósito de hacer mas ligero el trabajo de cifrado de distintos tipos.
-SHA256 Etc...</Description>
-    <Version>1.0.7</Version>
+Encrypt.Net Library created with the purpose of making the encryption work of different types lighter.
+Herramientas de encriptado y desencriptado
+Encryption and decryption tools
+AES128, AES256, SHA1, SHA256, SHA384, SHA512, HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5, MD5, BASE64</Description>
+    <Version>1.0.8</Version>
     <PackageIcon>fingerprint-solid.png</PackageIcon>
     <PackageTags>Encrypt.Net,SHA,SHA256</PackageTags>
   </PropertyGroup>
