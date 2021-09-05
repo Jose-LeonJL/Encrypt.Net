@@ -10,6 +10,7 @@ namespace Test
             Test_SHA();
             Test_HMAC();
             Test_Base64();
+            AES();
         }
 
         //Examples for SHA 
@@ -37,6 +38,27 @@ namespace Test
             Console.WriteLine($"Cifrado Base64 \t{Cifrado.base64("Hello World!").Hash}");
             byte[] Body = Encoding.UTF8.GetBytes("Hello World!");
             Console.WriteLine($"Cifrado Base64 \t{Cifrado.base64(Body).Hash}");
+        }
+
+        //Examples for AES
+        static void AES()
+        {
+            var AES128 = Cifrado.AES128("Hola", "password");
+            var AES256 = Cifrado.AES256("Hola", "password");
+
+            var Decrypt_AES128 = Decifrado.AES128(AES128.Data, "password");
+            var Decrypt_AES256 = Decifrado.AES256(AES256.Data, "password");
+
+            Console.WriteLine($"AES");
+            Console.WriteLine($"Opciones de Cifrados");
+            Console.WriteLine($"Hash  ----  {AES128.Hash}");
+            Console.WriteLine($"Hash  ----  {AES128.Hash}");
+            Console.WriteLine($"Base64  ----  {AES128.Base64}");
+            Console.WriteLine($"Base64  ----  {AES128.Base64}\n");
+            Console.WriteLine($"Opciones de Decifrados");
+            Console.WriteLine($"{Decrypt_AES128.Hash}");
+            Console.WriteLine($"{Decrypt_AES256.Hash}");
+
         }
     }
 }
