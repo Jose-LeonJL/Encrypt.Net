@@ -3,7 +3,10 @@
 [![License](https://img.shields.io/github/license/Jose-LeonJL/Times-Net.svg?label=License&maxAge=86400)](LICENSE.md)
 
 Encrypt.Net Librería creada con el propósito de hacer mas ligero el trabajo de cifrado de distintos tipos.
-SHA256 Etc...
+Encrypt.Net Library created with the purpose of making the encryption work of different types lighter.
+Herramientas de encriptado y desencriptado
+Encryption and decryption tools
+AES128, AES256, SHA1, SHA256, SHA384, SHA512, HMAC-SHA1, HMAC-SHA256, HMAC-SHA384, HMAC-SHA512, HMAC-MD5, MD5, BASE64
 ### Soporte
 -  .Net Framework
 - .Net Core
@@ -21,9 +24,30 @@ SHA256 Etc...
 Using Encrypt.Net.Text;
 public class Ejemplo
 {
-  public void Times_Test()
+  //SHA Examples
+  public void SHA_Test()
   {
     Console.WriteLine(Cifrado.sha256("Hola").HASH);
+    Console.WriteLine(Cifrado.sha256("Hola").Base64);
+  }
+  
+  //AES Examples
+  public void AES_Test()
+  {
+    var AES128 = Cifrado.AES128("Hola", "password");
+    var AES256 = Cifrado.AES256("Hola", "password");
+    
+    var Decrypt_AES128 = Decifrado.AES128(AES128.Data, "password");
+    var Decrypt_AES256 = Decifrado.AES256(AES256.Data, "password");
+    Console.WriteLine($"AES");
+    Console.WriteLine($"Opciones de Cifrados");
+    Console.WriteLine($"Hash  ----  {AES128.Hash}");
+    Console.WriteLine($"Hash  ----  {AES128.Hash}");
+    Console.WriteLine($"Base64  ----  {AES128.Base64}");
+    Console.WriteLine($"Base64  ----  {AES128.Base64}\n");
+    Console.WriteLine($"Opciones de Decifrados");
+    Console.WriteLine($"{Decrypt_AES128.Hash}");
+    Console.WriteLine($"{Decrypt_AES256.Hash}");
   }
 }
 ```
@@ -32,8 +56,28 @@ public class Ejemplo
 ```vb
 Imports Times
 Public Class Ejemplo
-  Public sub Times_Test()
+'SHA examples
+  Public sub SHA_Test()
     Console.WriteLine(Cifrado.sha256("Hola").HASH)
+    Console.WriteLine(Cifrado.sha256("Hola").Base64)
+  end sub
+  
+'AES examples
+  public sub AES_Test()
+    dim AES128 = Cifrado.AES128("Hola", "password")
+    dim AES256 = Cifrado.AES256("Hola", "password")
+
+    dim Decrypt_AES128 = Decifrado.AES128(AES128.Data, "password")
+    dim Decrypt_AES256 = Decifrado.AES256(AES256.Data, "password")
+    Console.WriteLine($"AES")
+    Console.WriteLine($"Opciones de Cifrados")
+    Console.WriteLine($"Hash  ----  {AES128.Hash}")
+    Console.WriteLine($"Hash  ----  {AES128.Hash}")
+    Console.WriteLine($"Base64  ----  {AES128.Base64}")
+    Console.WriteLine($"Base64  ----  {AES128.Base64}\n")
+    Console.WriteLine($"Opciones de Decifrados")
+    Console.WriteLine($"{Decrypt_AES128.Hash}")
+    Console.WriteLine($"{Decrypt_AES256.Hash}")
   end sub
 end Class
 ```
