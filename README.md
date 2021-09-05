@@ -3,15 +3,16 @@
 [![License](https://img.shields.io/github/license/Jose-LeonJL/Times-Net.svg?label=License&maxAge=86400)](LICENSE.md)
 
 Encrypt.Net Librería creada con el propósito de hacer mas ligero el trabajo de cifrado de distintos tipos.
+SHA256 Etc...
 ### Soporte
 -  .Net Framework
 - .Net Core
 - .Net Standar
 
 ### Instalacion
-- Package Manager `Install-Package Encrypt.Net -Version 1.0.4`
-- .Net CLI `dotnet add package Encrypt.Net --version 1.0.4`
-- PackageReference `<PackageReference Include="Encrypt.Net" Version="1.0.4" />`
+- Package Manager `Install-Package Encrypt.Net -Version 1.0.7`
+- .Net CLI `dotnet add package Encrypt.Net --version 1.0.7`
+- PackageReference `<PackageReference Include="Encrypt.Net" Version="1.0.7" />`
 ### Uso
 
 > C#
