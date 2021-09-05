@@ -13,9 +13,9 @@ AES128, AES256, SHA1, SHA256, SHA384, SHA512, HMAC-SHA1, HMAC-SHA256, HMAC-SHA38
 - .Net Standar
 
 ### Instalacion
-- Package Manager `Install-Package Encrypt.Net -Version 1.0.7`
-- .Net CLI `dotnet add package Encrypt.Net --version 1.0.7`
-- PackageReference `<PackageReference Include="Encrypt.Net" Version="1.0.7" />`
+- Package Manager `Install-Package Encrypt.Net -Version 1.0.8`
+- .Net CLI `dotnet add package Encrypt.Net --version 1.0.8`
+- PackageReference `<PackageReference Include="Encrypt.Net" Version="1.0.8" />`
 ### Uso
 
 > C#
