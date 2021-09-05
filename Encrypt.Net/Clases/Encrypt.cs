@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Encrypt.Net.Text;
 
 namespace Encrypt.Net
 {
@@ -29,6 +30,7 @@ namespace Encrypt.Net
                 return this._Data;
             }
         }
+        public string Base64 { get => Cifrado.base64(this._Data).Hash; }
 
         //Constructores
         public Encrypt(string Hash,byte[] Data)
