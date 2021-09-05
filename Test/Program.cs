@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 using Encrypt.Net.Text;
 namespace Test
 {
@@ -6,18 +7,36 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            Text_Encrypt _Encrypt;
-            _Encrypt = new Text_Encrypt();
-            Console.WriteLine("Cifrados SHA");
-            Console.WriteLine($"Cifrado SHA256 \t{_Encrypt.sha256("Hello World!")}");
-            Console.WriteLine($"Cifrado SHA384 \t{_Encrypt.sha384("Hello World!")}");
-            Console.WriteLine($"Cifrado SHA512 \t{_Encrypt.sha512("Hello World!")}\n");
-            Console.WriteLine("Cifrados HMAC-SHA");
-            Console.WriteLine($"Cifrado HMAC-SHA256 \t{_Encrypt.HMAC_sha256("Hello World!","Hola")}");
-            Console.WriteLine($"Cifrado HMAC-SHA384 \t{_Encrypt.HMAC_sha384("Hello World!","Hola")}");
-            Console.WriteLine($"Cifrado HMAC-SHA512 \t{_Encrypt.HMAC_sha512("Hello World!","Hola")}");
+            Test_SHA();
+            Test_HMAC();
+            Test_Base64();
+        }
 
-            //Console.WriteLine("Hello World!");
+        //Examples for SHA 
+        static void Test_SHA()
+        {
+            Console.WriteLine("Cifrados SHA");
+            Console.WriteLine($"Cifrado SHA256 \t{Cifrado.sha256("Hello World!").Hash}");
+            Console.WriteLine($"Cifrado SHA384 \t{Cifrado.sha384("Hello World!").Hash}");
+            Console.WriteLine($"Cifrado SHA512 \t{Cifrado.sha512("Hello World!").Hash}\n");
+        }
+
+        //Exaples for HMAC
+        static void Test_HMAC()
+        {
+            Console.WriteLine("Cifrados HMAC-SHA");
+            Console.WriteLine($"Cifrado HMAC-SHA256 \t{Cifrado.HMAC_sha256("Hello World!", "Hola").Hash}");
+            Console.WriteLine($"Cifrado HMAC-SHA384 \t{Cifrado.HMAC_sha384("Hello World!", "Hola").Hash}");
+            Console.WriteLine($"Cifrado HMAC-SHA512 \t{Cifrado.HMAC_sha512("Hello World!", "Hola").Hash}\n");
+        }
+
+        //Examples for Base64
+        static void Test_Base64()
+        {
+            Console.WriteLine("Cifrados BASE64");
+            Console.WriteLine($"Cifrado Base64 \t{Cifrado.base64("Hello World!").Hash}");
+            byte[] Body = Encoding.UTF8.GetBytes("Hello World!");
+            Console.WriteLine($"Cifrado Base64 \t{Cifrado.base64(Body).Hash}");
         }
     }
 }

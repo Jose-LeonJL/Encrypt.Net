@@ -1,73 +1,43 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 
 namespace Encrypt.Net.Text
 {
-    public class Text_Encrypt
+    public static class Cifrado
     {
-        //Variables
-        private string _Contraseña;
-        private byte[] _Contraseña_Bytes;
-
-        //Propiedades
-        public string Key
-        {
-            get
-            {
-                return this._Contraseña;
-            }
-        }
-
-        //Constructores
-        public Text_Encrypt()
-        {
-            this._Contraseña = null;
-            this._Contraseña_Bytes = null;
-        }
-
-        public Text_Encrypt(string Key)
-        {
-            this._Contraseña = Key;
-            this._Contraseña_Bytes = Encoding.UTF8.GetBytes(Key);
-        }
-
-        public Text_Encrypt(Byte[] Key)
-        {
-            this._Contraseña = Encoding.UTF8.GetString(Key);
-            this._Contraseña_Bytes = Key;
-        }
-
-        //Procesos y funciones
+        //Procesos y Funciones
 
         //EAS
-        private string AES128()
+        private static Encrypt AES128()
         {
-            string Resultado = "";
+            Encrypt Resultado = null;
             try
             {
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
 
             }
             return Resultado;
         }
-        private string AES256()
+        private static Encrypt AES256()
         {
-            string Resultado = null;
+            Encrypt Resultado = null;
             return Resultado;
         }
-        private string AES512()
+        private static Encrypt AES512()
         {
-            string Resultado = null;
+            Encrypt Resultado = null;
             return Resultado;
         }
 
         //Cifrados SHA
-        public string sha256(string Text)
+        public static Encrypt sha256(string Text)
         {
-            string Resultado="";
+            Encrypt Resultado ;
             try
             {
                 using var sha256 = SHA256.Create();
@@ -77,17 +47,17 @@ namespace Encrypt.Net.Text
                 {
                     Constructor.Append(Body[i].ToString("x2"));
                 }
-                Resultado = Constructor.ToString();
+                Resultado = new Encrypt(Constructor.ToString(), Body);
             }
-            catch( Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
             return Resultado;
         }
-        public string sha384(string Text)
+        public static Encrypt sha384(string Text)
         {
-            string Resultado = "";
+            Encrypt Resultado ;
             try
             {
                 using var sha354 = SHA384.Create();
@@ -97,7 +67,7 @@ namespace Encrypt.Net.Text
                 {
                     Constructor.Append(Body[i].ToString("x2"));
                 }
-                Resultado = Constructor.ToString();
+                Resultado = new Encrypt(Constructor.ToString(), Body);
             }
             catch (Exception ex)
             {
@@ -105,9 +75,9 @@ namespace Encrypt.Net.Text
             }
             return Resultado;
         }
-        public string sha512(string Text)
+        public static Encrypt sha512(string Text)
         {
-            string Resultado = "";
+            Encrypt Resultado;
             try
             {
                 using var sha512 = SHA512.Create();
@@ -117,7 +87,7 @@ namespace Encrypt.Net.Text
                 {
                     Constructor.Append(Body[i].ToString("x2"));
                 }
-                Resultado = Constructor.ToString();
+                Resultado = new Encrypt(Constructor.ToString(), Body) ;
             }
             catch (Exception ex)
             {
@@ -127,9 +97,9 @@ namespace Encrypt.Net.Text
         }
 
         //Cifrados HMAC
-        public string HMAC_sha256(string Text,string Key)
+        public static Encrypt HMAC_sha256(string Text, string Key)
         {
-            string Resultado = "";
+            Encrypt Resultado;
             try
             {
                 byte[] Contraseña = Encoding.UTF8.GetBytes(Key);
@@ -141,7 +111,7 @@ namespace Encrypt.Net.Text
                 {
                     Constructor.Append(Codificacion[i].ToString("x2"));
                 }
-                Resultado = Constructor.ToString();
+                Resultado = new Encrypt(Constructor.ToString(), Body);
             }
             catch (Exception ex)
             {
@@ -149,26 +119,9 @@ namespace Encrypt.Net.Text
             }
             return Resultado;
         }
-        public byte[] HMAC_sha256(string Text)
+        public static Encrypt HMAC_sha384(string Text, string Key)
         {
-            byte[] Resultado;
-            try
-            {
-                byte[] Contraseña = Encoding.UTF8.GetBytes(this._Contraseña);
-                byte[] Body = Encoding.UTF8.GetBytes(Text);
-                HMACSHA256 Encoder = new HMACSHA256(Contraseña);
-                Resultado= Encoder.ComputeHash(Body);
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return Resultado;
-        }
-
-        public string HMAC_sha384(string Text,string Key)
-        {
-            string Resultado = "";
+            Encrypt Resultado;
             try
             {
                 byte[] Contraseña = Encoding.UTF8.GetBytes(Key);
@@ -180,22 +133,7 @@ namespace Encrypt.Net.Text
                 {
                     Constructor.Append(Codificacion[i].ToString("x2"));
                 }
-                Resultado = Constructor.ToString();
-            }catch (Exception ex)
-            {
-                throw ex;
-            }
-            return Resultado;
-        }
-        public byte[] HMAC_sha384(string Text)
-        {
-            byte[] Resultado ;
-            try
-            {
-                byte[] Contraseña = Encoding.UTF8.GetBytes(this._Contraseña);
-                byte[] Body = Encoding.UTF8.GetBytes(Text);
-                HMACSHA384 Encoder = new HMACSHA384(Contraseña);
-                Resultado = Encoder.ComputeHash(Body);
+                Resultado = new Encrypt( Constructor.ToString(),Body);
             }
             catch (Exception ex)
             {
@@ -203,10 +141,9 @@ namespace Encrypt.Net.Text
             }
             return Resultado;
         }
-
-        public string HMAC_sha512(string Text, string Key)
+        public static Encrypt HMAC_sha512(string Text, string Key)
         {
-            string Resultado = "";
+            Encrypt Resultado;
             try
             {
                 byte[] Contraseña = Encoding.UTF8.GetBytes(Key);
@@ -218,7 +155,7 @@ namespace Encrypt.Net.Text
                 {
                     Constructor.Append(Codificacion[i].ToString("x2"));
                 }
-                Resultado = Constructor.ToString();
+                Resultado = new Encrypt( Constructor.ToString(),Body);
             }
             catch (Exception ex)
             {
@@ -226,42 +163,15 @@ namespace Encrypt.Net.Text
             }
             return Resultado;
         }
-        public byte[] HMAC_sha512(string Text)
+        
+        //Base64
+        public static Encrypt base64(string text)
         {
-            byte[] Resultado;
-            try
-            {
-                byte[] Contraseña = Encoding.UTF8.GetBytes(this._Contraseña);
-                byte[] Body = Encoding.UTF8.GetBytes(Text);
-                HMACSHA512 Encoder = new HMACSHA512(Contraseña);
-                Resultado = Encoder.ComputeHash(Body);                
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            return Resultado;
-        }
-
-        public string base64(string text)
-        {
-            string Resultado;
+            Encrypt Resultado;
             try
             {
                 byte[] Body = Encoding.UTF8.GetBytes(text);
-                Resultado = Convert.ToBase64String(Body);
-            }catch (Exception ex)
-            {
-                throw ex;
-            }
-            return Resultado;
-        }
-        public string base64(byte[] Data)
-        {
-            string Resultado;
-            try
-            {
-                Resultado = Convert.ToBase64String(Data);
+                Resultado =new Encrypt( Convert.ToBase64String(Body),Body);
             }
             catch (Exception ex)
             {
@@ -269,5 +179,19 @@ namespace Encrypt.Net.Text
             }
             return Resultado;
         }
+        public static Encrypt base64(byte[] Data)
+        {
+            Encrypt Resultado;
+            try
+            {
+                Resultado = new Encrypt(Convert.ToBase64String(Data), Data);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return Resultado;
+        }
+
     }
 }
